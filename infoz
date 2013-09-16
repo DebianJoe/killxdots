@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Variables
+pname=$(cat /etc/os-release | grep -i pretty_name= | awk '{gsub("PRETTY_NAME=",""); print}')
 op_sys=$(uname -o | tr '[:upper:]' '[:lower:]')
 kernelver=$(uname -r | tr '[:upper:]' '[:lower:]')
 os_str="os"
@@ -25,7 +26,7 @@ totalmem=$(cat /proc/meminfo \
 totalMB=$(expr $totalmem / 1024)
 
 # Formatted Output
-printf "${c1}killX info$c0\n"
+printf "${c1}${pname}$c0\n"
 printf "$c4%10s  $(uname -n)\n$c0" $USER
 printf "%10s  $c3$op_sys\n$c0" $os_str
 printf "%10s  $c2$kernelver\n$c0" $kernel_str 
