@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Variables
+op_sys=$(uname -o | tr '[:upper:]' '[:lower:]')
+kernelver=$(uname -r | tr '[:upper:]' '[:lower:]')
+os_str="os"
+kernel_str="kernel"
+totalRAM="total"
+usedRAM="used"
+c0="\033[1;m"
+c1="\033[1;31m"
+c2="\033[1;32m"
+c3="\033[1;33m"
+c4="\033[1;34m"
+c5="\033[1;35m"
+c6="\033[1;36m"
+
+
+# Proc Functions
+usedmem=$(cat /proc/meminfo \
+    | grep "Active:" | sed 's/[^0-9]*//g')
+usedMB=$(expr $usedmem / 1024)
+totalmem=$(cat /proc/meminfo \
+    | grep -i memtotal | sed 's/[^0-9]*//g')
+totalMB=$(expr $totalmem / 1024)
+
+# Formatted Output
+printf "$c3%10s  $c4$(uname -n)\n$c0" $USER
+printf "%10s  $c1$op_sys\n$c0" $os_str
+printf "%10s  $c2$kernelver\n$c0" $kernel_str 
+printf "%10s  $c5$totalMB\n$c0" $totalRAM
+printf "%10s  $c6$usedMB\n$c0" $usedRAM
