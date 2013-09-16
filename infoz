@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variables
-pname=$(cat /etc/os-release | grep -i pretty_name= | awk '{gsub("PRETTY_NAME=",""); print}')
+pname=$(grep -i pretty_name= /etc/os-release | awk '{gsub("PRETTY_NAME=",""); print}')
 op_sys=$(uname -o | tr '[:upper:]' '[:lower:]')
 kernelver=$(uname -r | tr '[:upper:]' '[:lower:]')
 os_str="os"
