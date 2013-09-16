@@ -92,7 +92,7 @@ dls () {
 
 export EDITOR="emacs"
 
-alias cleanup=~/shell/cleanup
+alias cleanup=~/killxdots/cleanup
 alias rice=~/shell/rice
 alias emacs=/usr/bin/emacs-24.3-no-x11
 alias gitupper=~/gitupper/gitupper
