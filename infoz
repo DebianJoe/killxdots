@@ -25,8 +25,9 @@ totalmem=$(cat /proc/meminfo \
 totalMB=$(expr $totalmem / 1024)
 
 # Formatted Output
-printf "$c3%10s  $c4$(uname -n)\n$c0" $USER
-printf "%10s  $c1$op_sys\n$c0" $os_str
+printf "${c1}killX info$c0\n"
+printf "$c4%10s  $(uname -n)\n$c0" $USER
+printf "%10s  $c3$op_sys\n$c0" $os_str
 printf "%10s  $c2$kernelver\n$c0" $kernel_str 
 printf "%10s  $c5$totalMB\n$c0" $totalRAM
 printf "%10s  $c6$usedMB\n$c0" $usedRAM
