@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Variables
-pname=$(grep -i pretty_name= /etc/os-release | awk '{gsub("PRETTY_NAME=",""); print}')
+pname=$(grep -i pretty_name= /etc/os-release \
+    | awk '{gsub("PRETTY_NAME=",""); print}')
 op_sys=$(uname -o | tr '[:upper:]' '[:lower:]')
 kernelver=$(uname -r | tr '[:upper:]' '[:lower:]')
 os_str="os"
@@ -18,11 +19,11 @@ c6="\033[1;36m"
 
 
 # Proc Functions
-usedmem=$(cat /proc/meminfo \
-    | grep "Active:" | sed 's/[^0-9]*//g')
+usedmem=$(grep "^Active:" \
+    /proc/meminfo | sed 's/[^0-9]*//g')
 usedMB=$(expr $usedmem / 1024)
-totalmem=$(cat /proc/meminfo \
-    | grep -i memtotal | sed 's/[^0-9]*//g')
+totalmem=$(grep -i memtotal \
+    /proc/meminfo | sed 's/[^0-9]*//g')
 totalMB=$(expr $totalmem / 1024)
 
 # Formatted Output
