@@ -1,0 +1,82 @@
+#!/bin/sh
+if [ $# -lt 1 ]; then
+    # in case of no arguments, this is default layout #
+    # this creates a NEW window, leaving the last one #
+    # totally unchanged, and opens an application layout #
+    tmux new-window -a
+    tmux rename-window "T-macs Main"
+    tmux split-window -h
+    tmux last-pane
+    tmux send-keys "emacs -nw" C-m
+    tmux last-pane
+    tmux split-window -p80
+    tmux last-pane
+    tmux split-window -h
+    tmux send-keys "ls -a" C-m
+    tmux last-pane
+    tmux send-keys "cal" C-m
+    tmux last-pane
+else 
+case "$1" in
+    "bottom")
+	    # creates 3 pane bottom-stack #
+	    tmux split-window -v
+	    tmux split-window -h -p 66
+	    tmux split-window -h
+	    tmux select-pane -t 0
+	    tmux send-keys "clear" C-m
+	    ;;
+    "top")
+	    # creates 3 pane top-stack #
+	    tmux split-window -v
+	    tmux last-pane
+	    tmux split-window -h -p 66
+	    tmux split-window -h
+	    tmux select-pane -t 0
+	    tmux send-keys "clear" C-m
+	    ;;
+    "left")
+	    # creates 3 pane left stack #
+	    tmux split-window -h
+	    tmux select-pane -t 0
+	    tmux split-window -v -p 66
+	    tmux split-window -v
+	    tmux select-pane -t 0
+	    tmux send-keys "clear" C-m
+	    ;;
+    "right")
+	    # creates 3 pane right-stack #
+	    tmux split-window -h
+	    tmux split-window -v -p 66
+	    tmux split-window -v
+	    tmux select-pane -t 0
+	    tmux send-keys "clear" C-m
+	    ;;
+    "moc")
+	    # creates a mocp and alsamixer layout #
+	    # in a NEW window #
+	    tmux new-window -a
+	    tmux rename-window "moc"
+	    tmux split-window -h -p 35
+	    tmux split-window -v
+	    tmux send-keys "alsamixer" C-m
+	    tmux select-pane -t 1
+	    tmux send-keys "mocp" C-m
+	    ;;
+    "vim")
+	    # doesn't open vim...but rather #
+	    # opens links2 in left pane, #
+	    # and spits out directory listing #
+	    # in right pane#
+	    tmux new-window -a
+	    tmux rename-window "vim/links2"
+	    tmux split-window -h
+	    tmux send-keys "ls -a" C-m
+	    tmux select-pane -t 0
+	    tmux send-keys "links www.google.com" C-m
+	    ;;
+########################
+    *) echo "Invalid layout"
+	    ;;
+esac
+fi
