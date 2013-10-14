@@ -7,12 +7,12 @@ if [ $# -lt 1 ]; then
     tmux rename-window "T-macs Main"
     tmux split-window -h
     tmux last-pane
-    tmux send-keys "emacs -nw" C-m
+    tmux send-keys "emacs" C-m
     tmux last-pane
     tmux split-window -p80
     tmux last-pane
     tmux split-window -h
-    tmux send-keys "ls -a" C-m
+    tmux send-keys "~/killxdots/killconky" C-m
     tmux last-pane
     tmux send-keys "cal" C-m
     tmux last-pane
