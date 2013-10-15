@@ -16,7 +16,10 @@ if [ $# -lt 1 ]; then
     tmux last-pane
     tmux send-keys "cal" C-m
     tmux last-pane
-else 
+    tmux new-window -a
+    tmux rename-window "ERC"
+    tmux send-keys "emacs" C-m
+else
 case "$1" in
     "bottom")
 	    # creates 3 pane bottom-stack #
