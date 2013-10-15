@@ -55,24 +55,13 @@ case "$1" in
 	    tmux select-pane -t 0
 	    tmux send-keys "clear" C-m
 	    ;;
-    "moc")
-	    # creates a mocp and alsamixer layout #
-	    # in a NEW window #
-	    tmux new-window -a
-	    tmux rename-window "moc"
-	    tmux split-window -h -p 35
-	    tmux split-window -v
-	    tmux send-keys "alsamixer" C-m
-	    tmux select-pane -t 1
-	    tmux send-keys "mocp" C-m
-	    ;;
     "vim")
 	    # doesn't open vim...but rather #
-	    # opens links2 in left pane, #
+	    # opens links in left pane, #
 	    # and spits out directory listing #
 	    # in right pane#
 	    tmux new-window -a
-	    tmux rename-window "vim/links2"
+	    tmux rename-window "vim/links"
 	    tmux split-window -h
 	    tmux send-keys "ls -a" C-m
 	    tmux select-pane -t 0
