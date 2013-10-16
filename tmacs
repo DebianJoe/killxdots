@@ -1,4 +1,6 @@
 #!/bin/sh
+
+
 if [ $# -lt 1 ]; then
     # in case of no arguments, this is default layout #
     # this creates a NEW window, leaving the last one #
@@ -59,7 +61,7 @@ case "$1" in
 	    # doesn't open vim...but rather #
 	    # opens links in left pane, #
 	    # and spits out directory listing #
-	    # in right pane#
+	    # in right pane #
 	    tmux new-window -a
 	    tmux rename-window "vim/links"
 	    tmux split-window -h
