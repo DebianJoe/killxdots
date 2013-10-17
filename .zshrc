@@ -90,6 +90,11 @@ dls () {
 	echo $(ls -l | grep "^d" | awk '{ print $9 }' | tr -d "/")
 }
 
+search () {
+    if [ ! -z $1 ]; then
+	find . -name "$1" -print
+    fi
+}
 export EDITOR="emacs"
 
 alias cleanup=~/killxdots/cleanup
