@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+   $(w3m)
+else
+   $(w3m http://en.wikipedia.com/wiki/"$1")
+fi
