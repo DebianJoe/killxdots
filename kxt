@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# kxtool is a switchable script for useful one-liner bash commands #
+# it takes each particular tool as an argument #
+
+if [ $# -lt 1 ]; then 
+    # no tool specified, list tools for user #
+    
+else
+case "$1" in
+    "dirtree")
+	    # display directory tree #
+	    
+	    ;;
+    "gitfind")
+	    # print listing of all directories #
+	    # that contain a .git dir #
+	    $(find ~/ -name ".git" | sed -e 's/\.git//')
+	    ;;
+
+    *)
+	    # no matching tools found #
+fi
