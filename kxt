@@ -1,23 +1,42 @@
 #!/bin/bash
 
-# kxtool is a switchable script for useful one-liner bash commands #
+# kxt is a switchable script for useful bash commands #
 # it takes each particular tool as an argument #
 
-if [ $# -lt 1 ]; then 
+if [ $# -lt 1 ]; then
     # no tool specified, list tools for user #
-    
+    echo "Tools: dirtree, gitfind, dirclean, homeclean"
 else
 case "$1" in
     "dirtree")
 	    # display directory tree #
-	    
+	    ls -R | grep ":$" \
+		| sed -e 's/:$//' \
+		-e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
 	    ;;
     "gitfind")
 	    # print listing of all directories #
 	    # that contain a .git dir #
-	    $(find ~/ -name ".git" | sed -e 's/\.git//')
+	    find ~/ -name ".git" | sed -e 's/\.git//'
 	    ;;
-
-    *)
-	    # no matching tools found #
+    "dirclean")
+	    # removes directories with no content #
+	    find . -depth  -type d  -empty -exec rmdir {} \;
+	    ;;
+    "homeclean")
+	    # removes files ending with "~" #
+	    # prompts user before deletion, for #
+	    # added safety #
+	    backs=$(find ~/ -name "*~" -print0 | xargs -0)
+	    dotbacks=$(find ~/ -name "*~" -print0 | xargs -0)
+	    if [ -n "$backs" ]; then
+		rm -i $(find ~/ -name "*~" -print0 | xargs -0)
+	    elif [ -n "$dotbacks" ]; then
+		rm -i $(find ~/ -name ".*~" -print0 | xargs -0)
+	    else
+		echo "No Backups Found"
+	    fi
+	    ;;
+    *)	    echo "No Matching Tools found"
+esac
 fi
