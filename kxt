@@ -5,7 +5,17 @@
 
 if [ $# -lt 1 ]; then
     # no tool specified, list tools for user #
-    echo "Tools: dirtree, gitfind, dirclean, homeclean"
+    printf "\033[1;31mTools:\033[1;m\n"
+    printf "\033[1;32m%10s\033[1;m..%s\n" "dirtree" \
+	"display dir and subdirs as a tree"
+    printf "\033[1;32m%10s\033[1;m..%s\n" "gitfind" \
+	"lists all files tied to git repos"
+    printf "\033[1;32m%10s\033[1;m..%s\n" "dirclean" \
+	"removes empty directories"
+    printf "\033[1;32m%10s\033[1;m..%s\n" "homeclean" \
+	"removes backup~ files"
+    printf "\033[1;32m%10s\033[1;m..%s\n" "sort" \
+	"sorts files and subdirectories by size"
 else
 case "$1" in
     "dirtree")
@@ -37,6 +47,19 @@ case "$1" in
 		echo "No Backups Found"
 	    fi
 	    ;;
-    *)	    echo "No Matching Tools found"
+    "sort")
+	    # prints out files and subdirectoreis by size #
+	    du -sk ./* | sort -n | awk 'BEGIN{ pref[1]="K"; pref[2]="M"; pref[3]="G";} \
+            { total = total + $1; x = $1; y = 1; while( x > 1024 ) \
+            { x = (x + 1023)/1024; y++; } \
+            printf("%g%s\t%s\n",int(x*10)/ \
+            10,pref[y],$2); } END \
+            { y = 1; while( total > 1024 ) \
+            { total = (total + 1023)/1024; y++; } \
+            printf("Total: %g%s\n",int(total*10)/10,pref[y]); }'
+	    ;;
+
+    # if no matches found #
+    *)	    printf "\033[1;31mNo Matching Tools found\033[1;m\n"
 esac
 fi
