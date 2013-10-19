@@ -16,6 +16,8 @@ if [ $# -lt 1 ]; then
 	"removes backup~ files"
     printf "\033[1;32m%10s\033[1;m..%s\n" "sort" \
 	"sorts files and subdirectories by size"
+    printf "\033[1;32m%10s\033[1;m..%s\n" "gitorigin" \
+	"prints full url for the repo's origin"
 else
 case "$1" in
     "dirtree")
@@ -58,7 +60,10 @@ case "$1" in
             { total = (total + 1023)/1024; y++; } \
             printf("Total: %g%s\n",int(total*10)/10,pref[y]); }'
 	    ;;
-
+    "gitorigin")
+	    # prints url for the current git repo's origin #
+	    grep url $PWD/.git/config | awk '{$1=""; $2=""; sub("  ", " "); print}'
+	    ;;
     # if no matches found #
     *)	    printf "\033[1;31mNo Matching Tools found\033[1;m\n"
 esac
