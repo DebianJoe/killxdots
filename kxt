@@ -18,6 +18,8 @@ if [ $# -lt 1 ]; then
 	"sorts files and subdirectories by size"
     printf "\033[1;32m%10s\033[1;m..%s\n" "gitorigin" \
 	"prints full url for the repo's origin"
+    printf "\033[1;32m%10s\033[1;m..%s\n" "gitdiff" \
+	"Diffs ONLY the most recent change"
 else
 case "$1" in
     "dirtree")
@@ -64,6 +66,10 @@ case "$1" in
     "gitorigin")
 	    # prints url for the current git repo's origin #
 	    grep url $PWD/.git/config | sed -r 's/^([^ ]+ ){2}//'
+	    ;;
+    "gitdiff")
+	    # shows diff file for last 2 changes #
+	    git diff HEAD^ HEAD
 	    ;;
     # if no matches found #
     *)	    printf "\033[1;31mNo Matching Tools found\033[1;m\n"
