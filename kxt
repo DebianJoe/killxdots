@@ -5,7 +5,7 @@
 
 if [ $# -lt 1 ]; then
     # no tool specified, list tools for user #
-    printf "\033[1;31mTools:\033[1;m\n"
+    printf "\033[1;31m....-Tools-....\033[1;m\n"
     printf "\033[1;32m%10s\033[1;m..%s\n" "dirtree" \
 	"display dir and subdirs as a tree"
     printf "\033[1;32m%10s\033[1;m..%s\n" "gitfind" \
@@ -62,7 +62,7 @@ case "$1" in
 	    ;;
     "gitorigin")
 	    # prints url for the current git repo's origin #
-	    grep url $PWD/.git/config | awk '{$1=""; $2=""; sub("  ", " "); print}'
+	    grep url $PWD/.git/config | sed -r 's/^([^ ]+ ){2}//'
 	    ;;
     # if no matches found #
     *)	    printf "\033[1;31mNo Matching Tools found\033[1;m\n"
