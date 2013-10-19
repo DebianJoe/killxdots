@@ -8,18 +8,18 @@ if [ $# -lt 1 ]; then
     printf "\033[1;31m....-Tools-....\033[1;m\n"
     printf "\033[1;32m%10s\033[1;m..%s\n" "dirtree" \
 	"display dir and subdirs as a tree"
-    printf "\033[1;32m%10s\033[1;m..%s\n" "gitfind" \
-	"lists all files tied to git repos"
     printf "\033[1;32m%10s\033[1;m..%s\n" "dirclean" \
 	"removes empty directories"
     printf "\033[1;32m%10s\033[1;m..%s\n" "homeclean" \
 	"removes backup~ files"
     printf "\033[1;32m%10s\033[1;m..%s\n" "sort" \
 	"sorts files and subdirectories by size"
+    printf "\033[1;32m%10s\033[1;m..%s\n" "gitfind" \
+	"lists all files tied to git repos"
     printf "\033[1;32m%10s\033[1;m..%s\n" "gitorigin" \
-	"prints full url for the repo's origin"
+	"prints full url for the repo's origin...(current dir)"
     printf "\033[1;32m%10s\033[1;m..%s\n" "gitdiff" \
-	"Diffs ONLY the most recent change"
+	"Diffs ONLY the most recent change.......(current dir)"
 else
 case "$1" in
     "dirtree")
@@ -68,7 +68,7 @@ case "$1" in
 	    grep url $PWD/.git/config | sed -r 's/^([^ ]+ ){2}//'
 	    ;;
     "gitdiff")
-	    # shows diff file for last 2 changes #
+	    # shows diff file for last change #
 	    git diff HEAD^ HEAD
 	    ;;
     # if no matches found #
