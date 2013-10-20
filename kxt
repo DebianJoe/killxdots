@@ -45,6 +45,10 @@ if [ $# -lt 1 ]; then
 	"prints full url for the repo's origin...(current dir)"
     printf "\033[1;32m%13s\033[1;m..%s\n" "gitdiff" \
 	"Diffs ONLY the most recent change.......(current dir)"
+    printf "\033[1;32m%13s\033[1;m..%s\n" "symlinks" \
+	"Locate Symlinks.................(current and sub dir)"
+    printf "\033[1;32m%13s\033[1;m..%s\n" "execuatables" \
+	"Locate all execuatable files....(current and sub dir)"
 else
 case "$1" in
     "dirtree")
@@ -111,6 +115,15 @@ case "$1" in
     "snail")
 	    # converts all spaces in PWD to underscores #
 	    for f in *\ *; do mv -- "$f" "${f// /_}"; done
+	    ;;
+    "symlinks")
+	    # find all symlinks in current and sub directories #
+	    find ./ -type l -exec ls -l '{}' \;
+	    ;;
+    "executables")
+	    # find all executables in current and sub #
+	    # directories #
+	    find ./ -type f -perm -o+rx -exec ls -ld '{}' \; | less
 	    ;;
     # if no matches found #
     *)	    printf "\033[31;4mNo Matching Tools found\033[1;m\n"
