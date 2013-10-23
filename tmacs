@@ -69,6 +69,12 @@ case "$1" in
 	    tmux select-pane -t 0
 	    tmux send-keys "links www.google.com" C-m
 	    ;;
+    "blank")
+	    # opens new window with blank session #
+	    tmux new-window -a
+	    tmux rename-window "Blank_Win"
+	    tmux send-keys "ls -a" C-m
+	    ;;
 ########################
     *) echo "Invalid layout"
 	    ;;
