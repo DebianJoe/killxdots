@@ -1,4 +1,4 @@
 #!/bin/bash
 
 w3m http://weather.weatherbug.com/AR/Little%20Rock-weather.html -dump\
-| grep -i 'hi:\|lo:\|rain:\|humidity:\|dew point:'
+| grep -i '^hi:\|^lo:\|^rain:\|^humidity:\|^dew point:'
