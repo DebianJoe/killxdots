@@ -104,8 +104,9 @@ case "$1" in
             || echo "Current directory is NOT a git repo"
 	    ;;
     "dist-upgrade")
+	    # pings default gateway, check connection #
 	    # updates ALL git repos, possible breakage #
-	    ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` \
+	    ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) \
 		> /dev/null && online=1 || online=0
 	    if [ $online -eq 1 ]; then
 	    for d in `find ~/. -name .git -type d`; do
