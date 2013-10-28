@@ -75,7 +75,7 @@ case "$1" in
 	    ;;
     "cvc")
 	    ##Console Colors - Baskerville - Count Von Count;
-	    #tweaked for console by DJ
+	    #tweaked for console by DJ: TODO higher contrast
 	    echo -en "\e]P0303030"
 	    echo -en "\e]P85E5E5E"
 	    echo -en "\e]P7C6C6C6"
@@ -96,7 +96,7 @@ case "$1" in
 	    ;;
     "vblue")
 	    ## Console Colors - Gutterslob Visiblue
-	    echo -en "\e]P0000000"
+	    echo -en "\e]P0000000"#background#
 	    echo -en "\e]P8333399"
 	    echo -en "\e]P16666CC"
 	    echo -en "\e]P99999FF"
