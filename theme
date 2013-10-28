@@ -1,0 +1,129 @@
+# Console colors -Baskerville - IvoryLight-
+if [ "$TERM" = "linux" ]; then
+    echo -en "\e]P0FEF9EC" #background
+    echo -en "\e]P8C5C1B4" #darkgrey
+    echo -en "\e]P1E75C58" #darkred
+    echo -en "\e]P9B22B31" #red
+    echo -en "\e]P200A250" #darkgreen
+    echo -en "\e]PA007427" #green
+    echo -en "\e]P3A08A00" #brown
+    echo -en "\e]PB715F00" #yellow
+    echo -en "\e]P4208FFB" #darkblue
+    echo -en "\e]PC0065CA" #blue
+    echo -en "\e]P5D160C4" #darkmagenta
+    echo -en "\e]PDA03196" #magenta
+    echo -en "\e]P600A4C1" #darkcyan
+    echo -en "\e]PE007693" #cyan
+    echo -en "\e]P73E424D" #lightgrey
+    echo -en "\e]PF282C36" #white
+    clear #for background artifacting
+fi
+
+# Console colors -Insignificato-
+if [ "$TERM" = "linux" ]; then
+    echo -en "\e]P0111111" #background
+    echo -en "\e]P85a5b5c" #darkgrey
+    echo -en "\e]P1755a5b" #darkred
+    echo -en "\e]P9a37679" #red
+    echo -en "\e]P268755a" #darkgreen
+    echo -en "\e]PA87a376" #green
+    echo -en "\e]P3756e5a" #brown
+    echo -en "\e]PBa39b76" #yellow
+    echo -en "\e]P45b6976" #darkblue
+    echo -en "\e]PC758ba3" #blue
+    echo -en "\e]P5755b76" #darkmagenta
+    echo -en "\e]PD9f76a3" #magenta
+    echo -en "\e]P65b7674" #darkcyan
+    echo -en "\e]PE75a3a1" #cyan
+    echo -en "\e]P7808080" #lightgrey
+    echo -en "\e]PFaeafb0" #white
+    clear #for background artifacting
+fi
+
+##Console Colours - Mono; Tweaked for console by WuxMedia
+if [ "$TERM" = "linux" ]; then
+    echo -en "\e]P0111111" #background
+    echo -en "\e]P8B0B0B0" #darkgrey
+    echo -en "\e]P15a5a5a" #darkred
+    echo -en "\e]P9636363" #red
+    echo -en "\e]P26B6B6B" #darkgreen
+    echo -en "\e]PAA5A5A5" #green
+    echo -en "\e]P3969696" #brown
+    echo -en "\e]PBE5E5E5" #yellow
+    echo -en "\e]P45a5a5a" #darkblue
+    echo -en "\e]PC6c6c6c" #blue
+    echo -en "\e]P5717171" #darkmagenta
+    echo -en "\e]PD757575" #magenta
+    echo -en "\e]P6777777" #darkcyan
+    echo -en "\e]PEC4C4C4" #cyan
+    echo -en "\e]P7FFFFFF" #lightgrey
+    echo -en "\e]PFDEDEDE" #white
+    clear #for background artifacting
+fi
+
+!Baskerville - Count Von Count
+*background:  #000000
+*foreground:  #919191
+
+
+! BLACK
+*color0:      #303030
+*color8:      #5E5E5E
+
+! WHITE
+*color7:      #C6C6C6
+*color15:     #FFFFFF
+
+! RED
+*color1:      #C10023
+*color9:      #FF8781
+
+! YELLOW
+*color3:      #B51D2C
+*color11:     #FF948B
+
+! GREEN
+*color2:      #A83334
+*color10:     #FFA095
+
+! CYAN
+*color6:      #9A413D
+*color14:     #FFAAA0
+
+! BLUE
+*color4:      #8C4B46
+*color12:     #FEB2AA
+
+! MAGENTA
+*color5:      #7D534F
+*color13:     #EBBBB5
+
+!Gutterslob Visiblue
+urxvt*background:           #000000
+urxvt*foreground:           #666699
+
+
+!Visiblue
+urxvt*color0:               #333366
+urxvt*color8:               #333399
+
+urxvt*color1:               #6666CC
+urxvt*color9:               #9999FF
+
+urxvt*color2:               #0099CC
+urxvt*color10:              #00CCFF
+
+urxvt*color3:               #3366CC
+urxvt*color11:              #6699FF
+
+urxvt*color4:               #006699
+urxvt*color12:              #0099CC
+
+urxvt*color5:               #0066FF
+urxvt*color13:              #0099FF
+
+urxvt*color6:               #669999
+urxvt*color14:              #66CCCC
+
+urxvt*color7:               #99CCCC
+urxvt*color15:              #CCFFFF
