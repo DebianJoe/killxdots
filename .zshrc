@@ -90,16 +90,15 @@ dls () {
 	echo $(ls -l | grep "^d" | awk '{ print $9 }' | tr -d "/")
 }
 
-search () {
-    if [ ! -z $1 ]; then
-	find . -name "$1" -print
-    fi
-}
 export EDITOR="emacs"
 
-alias cleanup=~/killxdots/cleanup
-alias rice=~/shell/rice
-alias emacs=/usr/bin/emacs-24.3-no-x11
-alias gitupper=~/gitupper/gitupper
-alias infoz=~/killxdots/infoz
-alias tmacs=~/killxdots/tmacs
+# aliases often for scripts...nobody else uses this system
+alias cleanup="~/killxdots/cleanup"
+alias emacs="/usr/bin/emacs-24.3-no-x11"
+alias gitupper="~/gitupper/gitupper"
+alias tmacs="~/killxdots/tmacs"
+alias kxt="~/killxdots/kxt"
+alias ccolor="~/consolecolor/ccolors"
+alias gcm="git commit -m"
+alias ga="git add"
+alias gpom="git push origin master"
