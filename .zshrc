@@ -9,18 +9,44 @@ autoload -Uz promptinit
 promptinit
 prompt adam2
 
-#source plugins
+#source plugins by path
 source ~/.antigen/antigen.zsh
 
 #antigen launches
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle git
+antigen bundle command-not-found
 
 #setopts
 setopt histignorealldups sharehistory
+setopt nobeep
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
 
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
+  # Modified Keybinds:
+bindkey "^B" backward-word
+bindkey "^F" forward-word
+
+# Zstyles
+  # Fuzzy Completion
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+zstyle -e ':completion:*:approximate:*' \
+    max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
+  # Keep History Clean
+zstyle ':completion:*:history-words' stop-yes
+zstyle ':completion:*:history-words' remove-all-dups yes
+zstyle ':completion:*:history-words' list false
+zstyle ':completion:*:history-words' menu yes
+  # Ignore completions for commands I don't have
+zstyle ':completion:*:functions' ignored-patterns '_*'
+  # Cute completions
+zstyle ':completion:*' format '___%d___'
+zstyle ':completion:*:warnings' \
+    format 'I can count to potato!!!'
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
@@ -102,3 +128,6 @@ alias ccolor="~/consolecolor/ccolors"
 alias gcm="git commit -m"
 alias ga="git add"
 alias gpom="git push origin master"
+
+# Finalize
+antigen apply
