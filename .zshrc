@@ -151,7 +151,7 @@ internetquery() {
 gitdiff_level () {
     # A numerically modified version of my kxt gitdiff which uses a
     # argv of a 1-9 value to show diffs over time
-    if [ -d "$PWD/.git" ]]; then
+    if [ -d "$PWD/.git" ]; then
 case "$1" in
     "1") git diff HEAD^ HEAD
 	;;
