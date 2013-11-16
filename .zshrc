@@ -145,6 +145,35 @@ internetquery() {
 	       > /dev/null && echo "Internet up" || echo "No Internet"
 }
 
+gitdiff_level () {
+    # A numerically modified version of my kxt gitdiff which uses a
+    # argv of a 1-9 value to show diffs over time
+    if [ -d "$PWD/.git" ]]; then
+case "$1" in
+    "1") git diff HEAD^ HEAD
+	;;
+    "2") git diff HEAD^^ HEAD
+	;;
+    "3") git diff HEAD^^^ HEAD
+	;;
+    "4") git diff HEAD^^^^ HEAD
+	;;
+    "5") git diff HEAD^^^^^ HEAD
+	;;
+    "6") git diff HEAD^^^^^^ HEAD
+	;;
+    "7") git diff HEAD^^^^^^^ HEAD
+	;;
+    "8") git diff HEAD^^^^^^^^ HEAD
+	;;
+    "9") git diff HEAD^^^^^^^^^ HEAD
+	;;
+    *) echo "give a level to diff 1-9"
+	;;
+    else
+    echo "current directory not tied to git."
+    }
+
 export EDITOR="emacs"
 
 # aliases often for scripts...nobody else uses this system
