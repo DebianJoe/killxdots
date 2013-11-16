@@ -116,6 +116,35 @@ dls () {
 	echo $(ls -l | grep "^d" | awk '{ print $9 }' | tr -d "/")
 }
 
+killit() {
+    #Kills process that match a regexp in the argv
+    ps aux | grep -v "grep" | grep "$@" | awk '{print $2}' | xargs sudo kill
+}
+
+# crun -- compile and run .c program
+crun() {
+  local cprog=$1; shift
+  local n=$@[(i)--]
+  gcc -o ${cprog%.*} $cprog $@[1,n-1] && ./${cprog%.*} $@[n+1,-1]
+}
+
+clean_empty() {
+    rm -i (.L0) *.bak(.)
+}
+
+widthcheck() {
+    echo ${(l:79::-:)}
+}
+
+locate() {
+    find / -name "$1" 2>/dev/null
+}
+
+internetquery() {
+    ping -q -w 1 -c 1 $(ip r | grep default | cut -d ' ' -f 3) \
+	       > /dev/null && echo "Internet up" || echo "No Internet"
+}
+
 export EDITOR="emacs"
 
 # aliases often for scripts...nobody else uses this system
