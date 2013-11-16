@@ -128,13 +128,16 @@ crun() {
   gcc -o ${cprog%.*} $cprog $@[1,n-1] && ./${cprog%.*} $@[n+1,-1]
 }
 
+# cleans out empty directories
 clean_empty() {
     rm -i (.L0) *.bak(.)
 }
 
+# draws a 79 space ruler...it's a python thing
 widthcheck() {
     echo ${(l:79::-:)}
 }
+
 
 locate() {
     find / -name "$1" 2>/dev/null
@@ -170,8 +173,10 @@ case "$1" in
 	;;
     *) echo "give a level to diff 1-9"
 	;;
-    else
-    echo "current directory not tied to git."
+esac
+else
+echo "current directory not tied to git."
+fi
     }
 
 export EDITOR="emacs"
