@@ -1,9 +1,0 @@
-#!/usr/local/bin/zsh
-
-backs=$(find ./ -name "*~" -print0 | xargs -0)
-dotbacks=$(find ./ -name "*~" -print0 | xargs -0)
-if [ -n "$backs" ]; then
-    rm -i $(find ./ -name "*~" -print0 | xargs -0)
-elif [ -n "$dotbacks" ]; then
-    rm -i $(find ./ -name ".*~" -print0 | xargs -0)
-fi
